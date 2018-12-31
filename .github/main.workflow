@@ -1,6 +1,6 @@
  workflow "Build Rust project" {
    on = "push"
-   resolves = ["Release"]
+   resolves = ["Build"]
  }
 
  action "Format" {
