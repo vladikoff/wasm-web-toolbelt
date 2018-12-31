@@ -24,4 +24,5 @@ action "Build" {
 
 action "gh-pages" {
   uses = "vladikoff/actions-wasm-deploy-gh-pages@master"
+  secrets = ["GITHUB_TOKEN"]
 }
