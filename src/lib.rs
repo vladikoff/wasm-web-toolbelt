@@ -31,7 +31,6 @@ pub fn base64decode(encoded: String) -> String {
   bytes.to_owned()
 }
 
-
 #[wasm_bindgen]
 pub fn base64encode(to_encode: String) -> String {
   let b64 = base64::encode(to_encode.as_bytes());
@@ -49,7 +48,6 @@ pub fn hexdecode(encoded: String) -> String {
   let bytes = str::from_utf8(&hexval).unwrap();
   bytes.to_owned()
 }
-
 
 #[wasm_bindgen]
 pub fn hexencode(to_encode: String) -> String {
