@@ -35,7 +35,6 @@ function hexdecode() {
 hexDecodeTextarea.addEventListener('paste', hexdecode);
 hexDecodeTextarea.addEventListener('change', hexdecode);
 
-
 function hexencode() {
   const result = wasm.hexencode(hexEncodeTextarea.value);
   hexDecodeTextarea.value = result;
@@ -43,3 +42,17 @@ function hexencode() {
 
 hexEncodeTextarea.addEventListener('paste', hexencode);
 hexEncodeTextarea.addEventListener('change', hexencode);
+
+// qr
+
+const qrTextarea = document.querySelector('#qrdata');
+const qrOutput = document.querySelector('#qrout');
+
+function qrGenerate() {
+  const result = wasm.qr_generate(qrTextarea.value);
+  qrOutput.innerHTML = '';
+  qrOutput.innerHTML = result;
+}
+
+qrTextarea.addEventListener('paste', qrGenerate);
+qrTextarea.addEventListener('change', qrGenerate);

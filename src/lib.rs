@@ -1,12 +1,14 @@
 extern crate cfg_if;
 extern crate wasm_bindgen;
 extern crate base64;
+extern crate qrcode_generator;
 
 mod utils;
 
 use cfg_if::cfg_if;
 use wasm_bindgen::prelude::*;
 use std::str;
+use qrcode_generator::QrCodeEcc;
 
 cfg_if! {
     // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -53,4 +55,12 @@ pub fn hexdecode(encoded: String) -> String {
 pub fn hexencode(to_encode: String) -> String {
   let unhexval = hex::encode(to_encode.as_bytes());
   unhexval.to_string().to_owned()
+}
+
+// qr
+
+#[wasm_bindgen]
+pub fn qr_generate(to_generate: String) -> String {
+  let result: String = qrcode_generator::to_svg_to_string(to_generate, QrCodeEcc::Low, 256, None).unwrap();
+  result.to_owned()
 }
